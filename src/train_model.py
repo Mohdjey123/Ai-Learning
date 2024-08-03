@@ -1,5 +1,6 @@
 import gdown
 import os
+import joblib
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -58,7 +59,4 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 
-# Example prediction
-sample_text = "I love the new features in this product!"
-prediction = model.predict([sample_text])[0]
-print(f'Sentiment: {prediction}')
+joblib.dump(model, 'sentiment_model.pkl')
